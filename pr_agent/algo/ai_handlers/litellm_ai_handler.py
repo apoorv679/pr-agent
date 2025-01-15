@@ -242,6 +242,8 @@ class LiteLLMAIHandler(BaseAiHandler):
 
             litellm.api_base = "https://llm-proxy.internal.cleartax.co/openai/v1"
 
+            print("OPEN_AI_BASE_URL", litellm.api_base)
+
             response = await acompletion(**kwargs)
         except (openai.APIError, openai.APITimeoutError) as e:
             get_logger().warning(f"Error during LLM inference: {e}")
