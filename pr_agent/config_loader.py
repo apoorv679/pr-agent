@@ -45,10 +45,8 @@ def get_settings():
         Dynaconf: The current settings object, either from the context or the global default.
     """
     try:
-        print("fetching settings from starlette context")
         return context["settings"]
     except Exception:
-        print("using global settings")
         return global_settings
 
 
