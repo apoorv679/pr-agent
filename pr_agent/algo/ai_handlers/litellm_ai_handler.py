@@ -11,7 +11,7 @@ from pr_agent.algo.utils import get_version
 from pr_agent.config_loader import get_settings
 from pr_agent.log import get_logger
 
-OPENAI_RETRIES = 5
+OPENAI_RETRIES = 1
 
 
 class LiteLLMAIHandler(BaseAiHandler):
@@ -243,7 +243,7 @@ class LiteLLMAIHandler(BaseAiHandler):
             litellm.api_base = "https://llm-proxy.internal.cleartax.co/openai/v1"
             kwargs["api_base"] = "https://llm-proxy.internal.cleartax.co/openai/v1"
 
-            litellm.set_verbose = True
+            os.environ['LITELLM_LOG'] = 'DEBUG'
 
             response = await acompletion(**kwargs)
         except (openai.APIError, openai.APITimeoutError) as e:
