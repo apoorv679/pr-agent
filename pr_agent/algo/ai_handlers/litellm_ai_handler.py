@@ -244,6 +244,7 @@ class LiteLLMAIHandler(BaseAiHandler):
             kwargs["api_base"] = "https://llm-proxy.internal.cleartax.co/openai/v1"
 
             os.environ['LITELLM_LOG'] = 'DEBUG'
+            litellm.set_verbose = True
 
             response = await acompletion(**kwargs)
         except (openai.APIError, openai.APITimeoutError) as e:
