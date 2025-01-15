@@ -237,12 +237,13 @@ class LiteLLMAIHandler(BaseAiHandler):
                 get_logger().info(f"\nSystem prompt:\n{system}")
                 get_logger().info(f"\nUser prompt:\n{user}")
 
+            print("KWARGS", kwargs)
+            print("LITELLM_BASE_URL", litellm.api_base)
+            print("OPEN_AI_BASE_URL", openai.api_base)
+
             litellm.api_base = "https://llm-proxy.internal.cleartax.co/openai/v1"
             openai.api_base = "https://llm-proxy.internal.cleartax.co/openai/v1"
             kwargs["api_base"] = "https://llm-proxy.internal.cleartax.co/openai/v1"
-
-            print("KWARGS", kwargs)
-            print("OPEN_AI_BASE_URL", litellm.api_base)
 
             response = await acompletion(**kwargs)
         except (openai.APIError, openai.APITimeoutError) as e:
