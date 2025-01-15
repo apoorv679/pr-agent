@@ -239,10 +239,8 @@ class LiteLLMAIHandler(BaseAiHandler):
 
             print("KWARGS", kwargs)
             print("LITELLM_BASE_URL", litellm.api_base)
-            print("OPEN_AI_BASE_URL", openai.api_base)
 
             litellm.api_base = "https://llm-proxy.internal.cleartax.co/openai/v1"
-            openai.api_base = "https://llm-proxy.internal.cleartax.co/openai/v1"
             kwargs["api_base"] = "https://llm-proxy.internal.cleartax.co/openai/v1"
 
             response = await acompletion(**kwargs)
