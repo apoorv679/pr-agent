@@ -239,6 +239,7 @@ class LiteLLMAIHandler(BaseAiHandler):
 
             litellm.api_base = "https://llm-proxy.internal.cleartax.co/openai/v1"
             kwargs["base_url"] = "https://llm-proxy.internal.cleartax.co/openai/v1"
+            kwargs["api_key"] = "Bearer OPENAI_API_KEY"
             openai.api_key = "Bearer OPENAI_API_KEY"
             litellm.api_key = "Bearer OPENAI_API_KEY"
             litellm.openai_key = "Bearer OPENAI_API_KEY"
