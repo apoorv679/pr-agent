@@ -237,12 +237,12 @@ class LiteLLMAIHandler(BaseAiHandler):
                 get_logger().info(f"\nSystem prompt:\n{system}")
                 get_logger().info(f"\nUser prompt:\n{user}")
 
-            print("KWARGS", kwargs)
-            print("LITELLM_BASE_URL", litellm.api_base)
+            litellm.api_base = "https://llm-proxy.internal.cleartax.co/openai/v1"
+            kwargs["base_url"] = "https://llm-proxy.internal.cleartax.co/openai/v1"
+            openai.api_key = "Bearer OPENAI_API_KEY"
+            litellm.api_key = "Bearer OPENAI_API_KEY"
+            litellm.openai_key = "Bearer OPENAI_API_KEY"
 
-            os.environ["OPENAI_API_BASE"] = "https://llm-proxy.internal.cleartax.co/openai/v1"
-            os.environ["OPENAI_API_KEY"] = "Bearer OPENAI_API_KEY"
-            
             os.environ['LITELLM_LOG'] = 'DEBUG'
             litellm.set_verbose = True
 
